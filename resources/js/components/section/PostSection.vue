@@ -2,8 +2,8 @@
   <section class="posts">
     <div class="container">
         <ul class="row">
-            <li class="col-4 mb-5" v-for ="post in posts" :key = "post-slug">
-                <BaseCard :title ="posts.title" :content="post.content" :slug="post.slug"/>
+            <li class="col-4 mb-5" v-for="post in posts" :key="post.slug">
+                <BaseCard :title="posts.title" :content="post.content" :slug="post.slug"/>
             </li>
         </ul>
     </div>

@@ -8,10 +8,13 @@
             <nav>
                 <ul>
                     <li>
-                        <router-link :to = "{ name: 'home' }">Home</router-link>
+                        <router-link :to ="{ name: 'home' }">Home</router-link>
                     </li>
                     <li>
-                        <router-link :to = "{ name: 'about' }">About</router-link>
+                        <router-link :to ="{ name: 'about' }">About</router-link>
+                    </li>
+                    <li>
+                        <router-link :to ="{ name: 'categories' }">Categorie</router-link>
                     </li>
                     <li>
                         <a href="/admin/home">Area Riservata</a>
@@ -29,6 +32,16 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+ul{
+    display: flex;
+    list-style: none;
+    column-gap: 20px;
+}
+
+.row{
+    align-items: center;
+}
 
 </style>

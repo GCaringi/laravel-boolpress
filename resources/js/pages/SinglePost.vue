@@ -7,7 +7,7 @@
         Categoria: {{post.category.name}}
     </p>
     <div class="mt-5">
-        <router-link :to = "{ name: 'home'}"> Home Page</router-link>
+        <router-link :to ="{ name: 'home'}"> Home Page</router-link>
     </div>
   </div>
 </template>
