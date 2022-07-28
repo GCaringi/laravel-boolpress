@@ -9,6 +9,8 @@ import SinglePost from './pages/SinglePost';
 import Page404 from './pages/Page404';
 import Categories from './pages/Categories';
 import SingleCategory from './pages/SingleCategory';
+import Tags from './pages/Tags';
+import SingleTag from './pages/SingleTag';
 
 
 const router = new VueRouter({
@@ -38,6 +40,16 @@ const router = new VueRouter({
             path: '/categories/:slug',
             name: 'single-category',
             component: SingleCategory,
+        },
+        {
+            path: '/tags',
+            name: 'tags',
+            component: Tags
+        },
+        {
+            path: '/tags/:slug',
+            name: 'single-tag',
+            component: SingleTag,
         },
         {
             path: '/*',

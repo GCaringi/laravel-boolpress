@@ -2,25 +2,26 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Category;
 use App\Http\Controllers\Controller;
+use App\Tag;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $tags = Tag::all();
 
-        return $categories;
+        return $tags;
+
     }
 
     public function show($slug)
     {
-        $category = Category::with(['posts' =>function($q){
+        $tag = Tag::with(['posts' => function($q) {
             $q->where('published', true);
         }])->where('slug', $slug)->first();
 
-        return $category;
+        return $tag;
     }
 }
