@@ -1,6 +1,8 @@
 <template>
   <div class="container" v-if="post">
     <h1>{{post.title}}</h1>
+    <img v-if="post.image_path" :src="post.image_path" alt="">
+    <img v-if="post.image" :src="`/storage/${post.image}`" alt="">
     <p>{{post.content}}</p>
     <h3>Autore: {{post.user.name}}</h3>
     <p v-if="post.category">

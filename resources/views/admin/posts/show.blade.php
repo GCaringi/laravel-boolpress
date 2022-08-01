@@ -9,6 +9,11 @@
                     <small>{{$post->category->name}}</small>
                 @endif
                 <p>{{$post->content}}</p>
+                @if ($post->image)
+                <div>
+                    <img src="{{asset("storage/{$post->image}")}}" alt="{{$post->title}}">
+                </div>
+                @endif
                 @if (count($post->tags) > 0)
                     <h6>Tags</h6>
                     <ul>

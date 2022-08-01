@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 use App\Post;
 use App\Category;
@@ -18,6 +19,7 @@ class PostController extends Controller
         'published' => 'sometimes|accepted',
         'category_id' => 'nullable|exists:categories,id',
         'tags' => 'nullable|exists:tags,id',
+        'image' => 'nullable|image|max:500'
     ];
     /**
      * Display a listing of the resource.
@@ -67,6 +69,10 @@ class PostController extends Controller
 
         if (isset($data['tags'])){
             $tmpPost->tags()->sync($data['tags']);
+        }
+
+        if (isset($data['image'])){
+            $tmpPost->image = Storage::put('uploads', $data['image']);  
         }
 
         return redirect(route('admin.posts.index'));
@@ -126,6 +132,14 @@ class PostController extends Controller
         $post->fill($data);
         $post->published = isset($data['published']);
 
+        if(isset($data['image'])){
+            if($post->image){
+                Storage::delete($post->image);
+            }
+
+            $post->image = Storage::put('uploads', $data['image']);
+        }
+
         $post->save();
         
         $tags = isset($data['tags']) ? $data['tags'] : [];
@@ -145,6 +159,10 @@ class PostController extends Controller
     {
         if ($post->user_id != Auth::id()){
             abort(403);
+        }
+
+        if($post->image){
+            Storage::delete($post->image);
         }
 
         $post->delete();

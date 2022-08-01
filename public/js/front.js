@@ -2602,7 +2602,17 @@ var render = function render() {
 
   return _vm.post ? _c("div", {
     staticClass: "container"
-  }, [_c("h1", [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.post.content))]), _vm._v(" "), _c("h3", [_vm._v("Autore: " + _vm._s(_vm.post.user.name))]), _vm._v(" "), _vm.post.category ? _c("p", [_vm._v("\n      Categoria: " + _vm._s(_vm.post.category.name) + "\n  ")]) : _vm._e(), _vm._v(" "), _c("div", {
+  }, [_c("h1", [_vm._v(_vm._s(_vm.post.title))]), _vm._v(" "), _vm.post.image_path ? _c("img", {
+    attrs: {
+      src: _vm.post.image_path,
+      alt: ""
+    }
+  }) : _vm._e(), _vm._v(" "), _vm.post.image ? _c("img", {
+    attrs: {
+      src: "/storage/".concat(_vm.post.image),
+      alt: ""
+    }
+  }) : _vm._e(), _vm._v(" "), _c("p", [_vm._v(_vm._s(_vm.post.content))]), _vm._v(" "), _c("h3", [_vm._v("Autore: " + _vm._s(_vm.post.user.name))]), _vm._v(" "), _vm.post.category ? _c("p", [_vm._v("\n      Categoria: " + _vm._s(_vm.post.category.name) + "\n  ")]) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "mt-5"
   }, [_c("router-link", {
     attrs: {

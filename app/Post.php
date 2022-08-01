@@ -11,7 +11,12 @@ class Post extends Model
     use Sluggable;
 
     //Mass Assignement
-    protected $guarded = ['tags'];
+    protected $guarded = ['tags', 'user_id', 'image'];
+    protected $appends = ['image_path'];
+
+    public function getImagePathAttribute(){
+        return $this->image ? asset("storage/{$this->image}") : null;
+    }
 
     public function category(){
         return $this->belongsTo('App\Category');

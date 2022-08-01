@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <h1>Create new post</h1>
-                <form action="{{route('admin.posts.update', $post->id)}}" method="POST">
+                <form action="{{route('admin.posts.update', $post->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
@@ -22,6 +22,18 @@
                           <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div class="form-group">
+                      <label for="image">Image</label>
+                      @if ($post->image)
+                        <div>
+                          <img width='100' src="{{asset("storage/{$post->image}")}}" alt="{{$post->title}}">
+                        </div>
+                      @endif
+                      <input type="file" class="form-control-file @error('image') is-invalid @enderror" id="image" name="image" value="{{old('image')}}">
+                      @error('image')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                      @enderror
+                  </div>
                     <div class="form-group">
                         <label for="category">Category</label>
                         <select class="form-control @error('category_id') is-invalid @enderror" id="category" name="category_id">
